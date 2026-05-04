@@ -1,0 +1,37 @@
+# Environment
+python-dotenv>=1.0.0
+
+# PDF loading
+pypdf>=3.0.0
+
+# Numeric / ML core
+numpy>=1.24.0
+
+# Embedding models (bge-m3, all-MiniLM-L6-v2, CrossEncoder)
+sentence-transformers>=2.2.2
+
+# Vietnamese NLP — M2 BM25 segmentation
+underthesea>=6.8.0
+
+# Vector database — M2 Dense search
+qdrant-client>=1.7.0,<2.0.0
+
+# BM25 — M2
+rank-bm25>=0.2.2
+
+# Cross-encoder reranker — M3
+FlagEmbedding>=1.2.0
+
+# Lightweight reranker (optional) — M3
+flashrank>=0.0.9
+
+# RAGAS evaluation — M4
+ragas>=0.1.7,<0.2.0
+datasets>=2.14.0
+
+# LLM generation + M5 enrichment
+openai>=1.0.0
+
+# Dev tools
+pytest>=7.4.0
+ruff>=0.1.0

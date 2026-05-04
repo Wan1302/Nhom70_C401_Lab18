@@ -1,8 +1,58 @@
+# Secrets
 .env
-.DS_Store
+.env.local
+.env.*.local
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 .pytest_cache/
-qdrant_data/
+.mypy_cache/
+.ruff_cache/
 *.egg-info/
+dist/
+build/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# ML model files (lớn, không cần track)
+models/
+*.bin
+*.safetensors
+*.pt
+*.onnx
+*.gguf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Qdrant local storage
+qdrant_data/
+
+# Reports (auto-generated)
 reports/*.json
+
+# Local planning (không cần track)
+/tasks
+
+# Logs & temp
+*.log
+*.tmp
+*.temp
+
+# Jupyter
+.ipynb_checkpoints/

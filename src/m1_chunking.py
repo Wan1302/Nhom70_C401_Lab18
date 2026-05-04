@@ -23,11 +23,20 @@ class Chunk:
 
 
 def load_documents(data_dir: str = DATA_DIR) -> list[dict]:
-    """Load all markdown/text files from data/. (Đã implement sẵn)"""
+    """Load .md và .pdf files từ data/."""
     docs = []
     for fp in sorted(glob.glob(os.path.join(data_dir, "*.md"))):
         with open(fp, encoding="utf-8") as f:
             docs.append({"text": f.read(), "metadata": {"source": os.path.basename(fp)}})
+    for fp in sorted(glob.glob(os.path.join(data_dir, "*.pdf"))):
+        try:
+            import pypdf
+            reader = pypdf.PdfReader(fp)
+            text = "\n\n".join(page.extract_text() or "" for page in reader.pages)
+            if text.strip():
+                docs.append({"text": text, "metadata": {"source": os.path.basename(fp)}})
+        except Exception as e:
+            print(f"  ⚠️  Không đọc được {os.path.basename(fp)}: {e}")
     return docs
 
 

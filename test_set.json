@@ -1,3 +1,82 @@
 [
-  {"question": "hihi cả nhà tự tạo testset bằng cơm nhé", "ground_truth": "Không kịp tạo luôn"},
+  {
+    "question": "Dữ liệu cá nhân là gì theo Nghị định 13/2023?",
+    "ground_truth": "Dữ liệu cá nhân là thông tin dưới dạng ký hiệu, chữ viết, chữ số, hình ảnh, âm thanh hoặc dạng tương tự trên môi trường điện tử gắn liền với một con người cụ thể hoặc giúp xác định một con người cụ thể."
+  },
+  {
+    "question": "Dữ liệu cá nhân nhạy cảm bao gồm những loại nào?",
+    "ground_truth": "Dữ liệu cá nhân nhạy cảm bao gồm: quan điểm chính trị, tôn giáo; tình trạng sức khỏe; đời sống tình dục; dữ liệu tội phạm hình sự; thông tin tài chính; dữ liệu về nguồn gốc chủng tộc; đặc điểm sinh trắc học."
+  },
+  {
+    "question": "Chủ thể dữ liệu có những quyền gì theo Nghị định 13/2023?",
+    "ground_truth": "Chủ thể dữ liệu có quyền được biết, quyền đồng ý, quyền truy cập, quyền rút lại sự đồng ý, quyền xóa dữ liệu, quyền hạn chế xử lý, quyền yêu cầu cung cấp dữ liệu, quyền phản đối xử lý, quyền khiếu nại tố cáo, quyền yêu cầu bồi thường thiệt hại."
+  },
+  {
+    "question": "Thời hạn thông báo vi phạm an ninh dữ liệu cá nhân là bao lâu?",
+    "ground_truth": "Trong vòng 72 giờ kể từ khi phát hiện vi phạm, bên kiểm soát và bên xử lý dữ liệu phải thông báo cho cơ quan bảo vệ dữ liệu cá nhân theo quy định."
+  },
+  {
+    "question": "Điều kiện để chuyển dữ liệu cá nhân ra nước ngoài là gì?",
+    "ground_truth": "Việc chuyển dữ liệu cá nhân ra nước ngoài phải được sự đồng ý của chủ thể dữ liệu, phải có hợp đồng đảm bảo mức độ bảo vệ tương đương trong nước, và phải thông báo cho Bộ Công an trước khi thực hiện."
+  },
+  {
+    "question": "Cơ quan nào chịu trách nhiệm bảo vệ dữ liệu cá nhân tại Việt Nam?",
+    "ground_truth": "Bộ Công an (Cục An ninh mạng và phòng, chống tội phạm sử dụng công nghệ cao) là cơ quan đầu mối chịu trách nhiệm về bảo vệ dữ liệu cá nhân tại Việt Nam theo Nghị định 13/2023."
+  },
+  {
+    "question": "Bên kiểm soát dữ liệu có nghĩa vụ gì khi xử lý dữ liệu cá nhân?",
+    "ground_truth": "Bên kiểm soát dữ liệu có nghĩa vụ: thực hiện biện pháp bảo vệ kỹ thuật, thông báo cho chủ thể dữ liệu về mục đích xử lý, chỉ xử lý dữ liệu đúng mục đích đã thông báo, lưu giữ hồ sơ xử lý, và phối hợp với cơ quan nhà nước khi có yêu cầu."
+  },
+  {
+    "question": "Xử lý dữ liệu cá nhân của trẻ em có yêu cầu đặc biệt nào?",
+    "ground_truth": "Việc xử lý dữ liệu cá nhân của trẻ em dưới 16 tuổi phải có sự đồng ý của cha mẹ hoặc người giám hộ hợp pháp. Dữ liệu cá nhân của trẻ em được coi là dữ liệu nhạy cảm và được bảo vệ ở mức độ cao hơn."
+  },
+  {
+    "question": "Đánh giá tác động xử lý dữ liệu cá nhân là gì và khi nào cần thực hiện?",
+    "ground_truth": "Đánh giá tác động xử lý dữ liệu cá nhân là quy trình đánh giá rủi ro đối với quyền và lợi ích của chủ thể dữ liệu. Cần thực hiện khi xử lý dữ liệu nhạy cảm, xử lý dữ liệu quy mô lớn, hoặc khi sử dụng công nghệ mới có nguy cơ cao."
+  },
+  {
+    "question": "Nguyên tắc xử lý dữ liệu cá nhân theo Nghị định 13/2023 là gì?",
+    "ground_truth": "Các nguyên tắc xử lý dữ liệu cá nhân gồm: hợp pháp, minh bạch; mục đích xác định; tối thiểu hóa dữ liệu; chính xác; giới hạn lưu trữ; toàn vẹn và bảo mật; trách nhiệm giải trình."
+  },
+  {
+    "question": "Sự đồng ý xử lý dữ liệu cá nhân phải đáp ứng những điều kiện nào?",
+    "ground_truth": "Sự đồng ý phải là tự nguyện, rõ ràng, cụ thể, có thông tin đầy đủ và không mơ hồ. Chủ thể dữ liệu phải được thông báo rõ ràng trước khi đồng ý và có thể rút lại sự đồng ý bất kỳ lúc nào."
+  },
+  {
+    "question": "Bên xử lý dữ liệu khác với bên kiểm soát dữ liệu như thế nào?",
+    "ground_truth": "Bên kiểm soát dữ liệu là tổ chức, cá nhân quyết định mục đích và phương tiện xử lý dữ liệu. Bên xử lý dữ liệu là tổ chức, cá nhân thực hiện việc xử lý dữ liệu thay mặt cho bên kiểm soát theo hợp đồng hoặc thỏa thuận."
+  },
+  {
+    "question": "Tổng tài sản của công ty tại thời điểm cuối kỳ báo cáo là bao nhiêu?",
+    "ground_truth": "Thông tin về tổng tài sản được ghi nhận trong Bảng cân đối kế toán tại mục Tổng cộng tài sản trong báo cáo tài chính."
+  },
+  {
+    "question": "Doanh thu thuần từ bán hàng và cung cấp dịch vụ trong kỳ là bao nhiêu?",
+    "ground_truth": "Doanh thu thuần được trình bày trong Báo cáo kết quả hoạt động kinh doanh, phản ánh doanh thu sau khi trừ các khoản giảm trừ doanh thu."
+  },
+  {
+    "question": "Lợi nhuận sau thuế thu nhập doanh nghiệp trong kỳ báo cáo là bao nhiêu?",
+    "ground_truth": "Lợi nhuận sau thuế thu nhập doanh nghiệp được thể hiện trong Báo cáo kết quả hoạt động kinh doanh, là phần lợi nhuận còn lại sau khi đã trừ thuế thu nhập doanh nghiệp."
+  },
+  {
+    "question": "Vốn chủ sở hữu của công ty bao gồm những thành phần nào?",
+    "ground_truth": "Vốn chủ sở hữu bao gồm vốn điều lệ, thặng dư vốn cổ phần, lợi nhuận sau thuế chưa phân phối và các quỹ. Thông tin chi tiết được trình bày trong Bảng cân đối kế toán và Báo cáo thay đổi vốn chủ sở hữu."
+  },
+  {
+    "question": "Nợ phải trả ngắn hạn của công ty bao gồm những khoản nào?",
+    "ground_truth": "Nợ phải trả ngắn hạn bao gồm vay và nợ thuê tài chính ngắn hạn, phải trả người bán, thuế và các khoản nộp nhà nước, phải trả người lao động, chi phí phải trả ngắn hạn và các khoản phải trả ngắn hạn khác."
+  },
+  {
+    "question": "Lưu chuyển tiền thuần từ hoạt động kinh doanh trong kỳ là bao nhiêu?",
+    "ground_truth": "Lưu chuyển tiền thuần từ hoạt động kinh doanh được trình bày trong Báo cáo lưu chuyển tiền tệ, phản ánh khả năng tạo ra tiền từ hoạt động kinh doanh chính của doanh nghiệp."
+  },
+  {
+    "question": "Công ty có những khoản đầu tư tài chính nào trong kỳ?",
+    "ground_truth": "Các khoản đầu tư tài chính của công ty bao gồm đầu tư vào công ty con, công ty liên kết, góp vốn liên doanh và các khoản đầu tư tài chính dài hạn và ngắn hạn khác, được trình bày trong Bảng cân đối kế toán và thuyết minh báo cáo tài chính."
+  },
+  {
+    "question": "Chính sách kế toán áp dụng cho việc ghi nhận doanh thu của công ty là gì?",
+    "ground_truth": "Doanh thu được ghi nhận khi doanh nghiệp đã chuyển giao phần lớn rủi ro và lợi ích gắn liền với quyền sở hữu hàng hóa hoặc khi dịch vụ được cung cấp xong, doanh thu được xác định đáng tin cậy và có khả năng thu được lợi ích kinh tế."
+  }
 ]
