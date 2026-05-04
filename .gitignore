@@ -43,9 +43,6 @@ Thumbs.db
 # Qdrant local storage
 qdrant_data/
 
-# Reports (auto-generated)
-reports/*.json
-
 # Local planning (không cần track)
 /tasks
 

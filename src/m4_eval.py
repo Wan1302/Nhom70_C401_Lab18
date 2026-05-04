@@ -105,7 +105,6 @@ def _evaluate_with_ragas_openai(
     from langchain_openai import ChatOpenAI, OpenAIEmbeddings
     from ragas import evaluate
     from ragas.metrics import answer_relevancy, context_precision, context_recall, faithfulness
-    from ragas.run_config import RunConfig
 
     dataset = Dataset.from_dict(
         {
@@ -117,15 +116,19 @@ def _evaluate_with_ragas_openai(
     )
     llm = ChatOpenAI(model=OPENAI_RAGAS_MODEL, temperature=0)
     embeddings = OpenAIEmbeddings(model=OPENAI_EMBEDDING_MODEL)
-    result = evaluate(
-        dataset,
+
+    eval_kwargs: dict = dict(
         metrics=[faithfulness, answer_relevancy, context_precision, context_recall],
         llm=llm,
         embeddings=embeddings,
-        run_config=RunConfig(timeout=60, max_retries=1, max_wait=5, max_workers=4),
-        raise_exceptions=False,
-        show_progress=True,
     )
+    try:
+        from ragas.run_config import RunConfig
+        eval_kwargs["run_config"] = RunConfig(timeout=120, max_retries=3, max_wait=10, max_workers=2)
+    except Exception:
+        pass
+
+    result = evaluate(dataset, **eval_kwargs)
     return _result_to_report(result, questions, answers, contexts, ground_truths)
 
 
