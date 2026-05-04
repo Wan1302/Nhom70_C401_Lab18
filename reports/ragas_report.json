@@ -1,0 +1,113 @@
+{
+  "aggregate": {
+    "faithfulness": 0.4791666666666667,
+    "answer_relevancy": 0.34859956465058234,
+    "context_precision": 0.6708333333010417,
+    "context_recall": 0.6428571428571429,
+    "evaluator_llm": "gpt-4o-mini",
+    "embedding_model": "text-embedding-3-small"
+  },
+  "num_questions": 20,
+  "failures": [
+    {
+      "question": "Doanh thu thuần từ bán hàng và cung cấp dịch vụ trong kỳ là bao nhiêu?",
+      "expected": "Doanh thu thuần được trình bày trong Báo cáo kết quả hoạt động kinh doanh, phản ánh doanh thu sau khi trừ các khoản giảm trừ doanh thu.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.0,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Lợi nhuận sau thuế thu nhập doanh nghiệp trong kỳ báo cáo là bao nhiêu?",
+      "expected": "Lợi nhuận sau thuế thu nhập doanh nghiệp được thể hiện trong Báo cáo kết quả hoạt động kinh doanh, là phần lợi nhuận còn lại sau khi đã trừ thuế thu nhập doanh nghiệp.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.0,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Vốn chủ sở hữu của công ty bao gồm những thành phần nào?",
+      "expected": "Vốn chủ sở hữu bao gồm vốn điều lệ, thặng dư vốn cổ phần, lợi nhuận sau thuế chưa phân phối và các quỹ. Thông tin chi tiết được trình bày trong Bảng cân đối kế toán và Báo cáo thay đổi vốn chủ sở hữu.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.0,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Nợ phải trả ngắn hạn của công ty bao gồm những khoản nào?",
+      "expected": "Nợ phải trả ngắn hạn bao gồm vay và nợ thuê tài chính ngắn hạn, phải trả người bán, thuế và các khoản nộp nhà nước, phải trả người lao động, chi phí phải trả ngắn hạn và các khoản phải trả ngắn hạn khác.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.0,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Lưu chuyển tiền thuần từ hoạt động kinh doanh trong kỳ là bao nhiêu?",
+      "expected": "Lưu chuyển tiền thuần từ hoạt động kinh doanh được trình bày trong Báo cáo lưu chuyển tiền tệ, phản ánh khả năng tạo ra tiền từ hoạt động kinh doanh chính của doanh nghiệp.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.0,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Công ty có những khoản đầu tư tài chính nào trong kỳ?",
+      "expected": "Các khoản đầu tư tài chính của công ty bao gồm đầu tư vào công ty con, công ty liên kết, góp vốn liên doanh và các khoản đầu tư tài chính dài hạn và ngắn hạn khác, được trình bày trong Bảng cân đối kế toán và thuyết minh báo cáo tài chính.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.0,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Tổng tài sản của công ty tại thời điểm cuối kỳ báo cáo là bao nhiêu?",
+      "expected": "Thông tin về tổng tài sản được ghi nhận trong Bảng cân đối kế toán tại mục Tổng cộng tài sản trong báo cáo tài chính.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.10416666666145832,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Chính sách kế toán áp dụng cho việc ghi nhận doanh thu của công ty là gì?",
+      "expected": "Doanh thu được ghi nhận khi doanh nghiệp đã chuyển giao phần lớn rủi ro và lợi ích gắn liền với quyền sở hữu hàng hóa hoặc khi dịch vụ được cung cấp xong, doanh thu được xác định đáng tin cậy và có khả năng thu được lợi ích kinh tế.",
+      "got": "Không tìm thấy thông tin trong tài liệu.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.49999999999375,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Dữ liệu cá nhân nhạy cảm bao gồm những loại nào?",
+      "expected": "Dữ liệu cá nhân nhạy cảm bao gồm: quan điểm chính trị, tôn giáo; tình trạng sức khỏe; đời sống tình dục; dữ liệu tội phạm hình sự; thông tin tài chính; dữ liệu về nguồn gốc chủng tộc; đặc điểm sinh trắc học.",
+      "got": "Dữ liệu cá nhân nhạy cảm bao gồm các loại sau:\n\na) Quan điểm chính trị, quan điểm tôn giáo;  \nb) Tình trạng sức khỏe và đời tư được ghi trong hồ sơ bệnh án, không bao gồm thông tin về nhóm máu;  \nc) Thông tin liên quan đến nguồn gốc chủng tộc, nguồn gốc dân tộc;  \nd) Thông tin về đặc điểm di truyền được thừa hưởng hoặc có được của cá nhân;  \nđ) Thông tin về thuộc tính vật lý, đặc điểm sinh học riêng của cá nhân;  \ne) Thông tin về đời sống tình dục, xu hướng tình dục của cá nhân;  \nf) Dữ liệu về tội phạm, hành vi phạm tội được thu thập, lưu trữ bởi các cơ quan thực thi pháp luật;  \ng) Thông tin khách hàng của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài, tổ chức cung ứng dịch vụ trung gian thanh toán, các tổ chức được phép khác, gồm: thông tin định danh khách hàng theo quy định của pháp luật, thông tin về tài khoản, thông tin về tiền gửi, thông tin về tài sản gửi, thông tin về giao dịch, thông tin về tổ chức, cá nhân là bên bảo đảm tại tổ chức tín dụng, chi nhánh ngân hàng, tổ chức cung ứng dịch vụ trung gian thanh toán;  \nh) Dữ liệu về vị trí của cá nhân được xác định qua dịch vụ định vị;  \ni) Dữ liệu cá nhân khác được pháp luật quy định là đặc thù và cần có biện pháp bảo mật cần thiết.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.5732118490280448,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    },
+    {
+      "question": "Bên kiểm soát dữ liệu có nghĩa vụ gì khi xử lý dữ liệu cá nhân?",
+      "expected": "Bên kiểm soát dữ liệu có nghĩa vụ: thực hiện biện pháp bảo vệ kỹ thuật, thông báo cho chủ thể dữ liệu về mục đích xử lý, chỉ xử lý dữ liệu đúng mục đích đã thông báo, lưu giữ hồ sơ xử lý, và phối hợp với cơ quan nhà nước khi có yêu cầu.",
+      "got": "Bên kiểm soát dữ liệu có các nghĩa vụ sau khi xử lý dữ liệu cá nhân:\n\n1. Thực hiện các biện pháp tổ chức và kỹ thuật cùng các biện pháp an toàn, bảo mật phù hợp để chứng minh các hoạt động xử lý dữ liệu đã được thực hiện theo quy định của pháp luật về bảo vệ dữ liệu cá nhân, rà soát và cập nhật các biện pháp này khi cần thiết.\n\n2. Ghi lại và lưu trữ nhật ký hệ thống quá trình xử lý dữ liệu cá nhân.\n\n3. Thông báo hành vi vi phạm quy định về bảo vệ dữ liệu cá nhân theo quy định.\n\n4. Lựa chọn bên xử lý dữ liệu cá nhân phù hợp với nhiệm vụ rõ ràng và chỉ làm việc với bên xử lý dữ liệu cá nhân có các biện pháp bảo vệ phù hợp.\n\n5. Bảo đảm các quyền của chủ thể dữ liệu theo quy định.\n\n6. Chịu trách nhiệm trước chủ thể dữ liệu về các thiệt hại do quá trình xử lý dữ liệu cá nhân gây ra.\n\n7. Phối hợp với Bộ Công an, cơ quan nhà nước có thẩm quyền trong bảo vệ dữ liệu cá nhân, cung cấp thông tin phục vụ điều tra, xử lý hành vi vi phạm quy định của pháp luật về bảo vệ dữ liệu cá nhân.",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.6008377622676033,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature, and require citations from retrieved context"
+    }
+  ]
+}
