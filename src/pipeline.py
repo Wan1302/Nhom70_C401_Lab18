@@ -4,7 +4,7 @@ import os, sys, time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.m1_chunking import load_documents, chunk_hierarchical
+from src.m1_chunking import load_documents, chunk_structure_aware
 from src.m2_search import HybridSearch
 from src.m3_rerank import CrossEncoderReranker
 from src.m4_eval import load_test_set, evaluate_ragas, failure_analysis, save_report
@@ -23,17 +23,19 @@ def build_pipeline():
     docs = load_documents()
     all_chunks = []
     for doc in docs:
-        parents, children = chunk_hierarchical(doc["text"], metadata=doc["metadata"])
-        for child in children:
-            all_chunks.append({"text": child.text, "metadata": {**child.metadata, "parent_id": child.parent_id}})
+        for chunk in chunk_structure_aware(doc["text"], metadata=doc["metadata"]):
+            all_chunks.append({"text": chunk.text, "metadata": chunk.metadata})
     print(f"  {len(all_chunks)} chunks from {len(docs)} documents")
 
     # Step 2: Enrichment (M5)
     print("\n[2/4] Enriching chunks (M5)...")
     enriched = enrich_chunks(all_chunks, methods=["contextual", "hyqa", "metadata"])
     if enriched:
-        # Use enriched text for indexing
-        all_chunks = [{"text": e.enriched_text, "metadata": e.auto_metadata} for e in enriched]
+        # Index enriched text (better retrieval), but keep original for LLM context
+        all_chunks = [
+            {"text": e.enriched_text, "metadata": {**e.auto_metadata, "original_text": e.original_text}}
+            for e in enriched
+        ]
         print(f"  Enriched {len(enriched)} chunks")
     else:
         print("  ⚠️  M5 not implemented — using raw chunks (fallback)")
@@ -55,19 +57,35 @@ def run_query(query: str, search: HybridSearch, reranker: CrossEncoderReranker) 
     results = search.search(query)
     docs = [{"text": r.text, "score": r.score, "metadata": r.metadata} for r in results]
     reranked = reranker.rerank(query, docs, top_k=RERANK_TOP_K)
-    contexts = [r.text for r in reranked] if reranked else [r.text for r in results[:3]]
+    top = reranked if reranked else results[:RERANK_TOP_K]
+    # Dùng original_text (trước khi enrich) để tránh noise khi LLM generate
+    contexts = [r.metadata.get("original_text", r.text) for r in top]
 
-    # TODO (nhóm): Replace with LLM generation for better scores
-    # from openai import OpenAI
-    # client = OpenAI()
-    # context_str = "\n\n".join(contexts)
-    # resp = client.chat.completions.create(model="gpt-4o-mini", messages=[
-    #     {"role": "system", "content": "Trả lời CHỈ dựa trên context. Nếu không có → nói 'Không tìm thấy.'"},
-    #     {"role": "user", "content": f"Context:\n{context_str}\n\nCâu hỏi: {query}"},
-    # ])
-    # answer = resp.choices[0].message.content
-    answer = contexts[0] if contexts else "Không tìm thấy thông tin."
+    answer = _llm_generate(query, contexts)
     return answer, contexts
+
+
+def _llm_generate(query: str, contexts: list[str]) -> str:
+    """Generate answer from LLM. Falls back to contexts[0] if no API key."""
+    from config import OPENAI_API_KEY
+    if OPENAI_API_KEY:
+        try:
+            from openai import OpenAI
+            client = OpenAI()
+            context_str = "\n\n".join(contexts)
+            resp = client.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[
+                    {"role": "system", "content": "Trả lời CHỈ dựa trên context được cung cấp. Nếu không tìm thấy thông tin → trả lời 'Không tìm thấy thông tin trong tài liệu.' Không bịa thêm thông tin."},
+                    {"role": "user", "content": f"Context:\n{context_str}\n\nCâu hỏi: {query}"},
+                ],
+                temperature=0.1,
+                max_tokens=512,
+            )
+            return (resp.choices[0].message.content or "").strip()
+        except Exception as e:
+            print(f"  ⚠️  LLM error: {e}")
+    return contexts[0] if contexts else "Không tìm thấy thông tin."
 
 
 def evaluate_pipeline(search: HybridSearch, reranker: CrossEncoderReranker):

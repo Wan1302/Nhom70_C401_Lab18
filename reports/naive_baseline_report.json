@@ -1,0 +1,12 @@
+{
+  "aggregate": {
+    "faithfulness": 0.7162907268170425,
+    "answer_relevancy": 0.25515328925056463,
+    "context_precision": 0.6708333333064582,
+    "context_recall": 0.5428571428571429,
+    "evaluator_llm": "gpt-4o-mini",
+    "embedding_model": "text-embedding-3-small"
+  },
+  "num_questions": 20,
+  "failures": []
+}

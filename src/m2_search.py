@@ -62,19 +62,27 @@ class DenseSearch:
 
     def _get_encoder(self):
         if self._encoder is None:
+            import torch
             from sentence_transformers import SentenceTransformer
-            self._encoder = SentenceTransformer(EMBEDDING_MODEL)
+            device = "cuda" if torch.cuda.is_available() else "cpu"
+            self._encoder = SentenceTransformer(EMBEDDING_MODEL, device=device)
         return self._encoder
 
     def index(self, chunks: list[dict], collection: str = COLLECTION_NAME) -> None:
         """Index chunks into Qdrant."""
+        if not chunks:
+            return
         from qdrant_client.models import Distance, VectorParams, PointStruct
-        self.client.recreate_collection(
+        try:
+            self.client.delete_collection(collection)
+        except Exception:
+            pass
+        self.client.create_collection(
             collection_name=collection,
             vectors_config=VectorParams(size=EMBEDDING_DIM, distance=Distance.COSINE),
         )
         texts = [c["text"] for c in chunks]
-        vectors = self._get_encoder().encode(texts, show_progress_bar=True)
+        vectors = self._get_encoder().encode(texts, show_progress_bar=True, batch_size=8)
         points = [
             PointStruct(
                 id=i,
@@ -88,12 +96,17 @@ class DenseSearch:
     def search(self, query: str, top_k: int = DENSE_TOP_K, collection: str = COLLECTION_NAME) -> list[SearchResult]:
         """Search using dense vectors."""
         query_vector = self._get_encoder().encode(query).tolist()
-        hits = self.client.search(collection_name=collection, query_vector=query_vector, limit=top_k)
+        response = self.client.query_points(
+            collection_name=collection,
+            query=query_vector,
+            limit=top_k,
+        )
+        hits = response.points
         return [
             SearchResult(
                 text=hit.payload["text"],
                 score=hit.score,
-                metadata=hit.payload,
+                metadata={k: v for k, v in hit.payload.items() if k != "text"},
                 method="dense",
             )
             for hit in hits
